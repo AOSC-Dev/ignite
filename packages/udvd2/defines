@@ -1,0 +1,12 @@
+# shellcheck shell=bash
+VER=2022-12-12
+SRCS=(git::commit=0f6cf9e6df9ff323753cf68c5c932130eaf81b6a::https://gitlab.com/FreeDOS/drivers/udvd2)
+CHKSUMS=(SKIP)
+SUBDIR=SOURCE/UDVD2
+
+PKGNAME=udvd2
+BUILDDEP=(nasm)
+
+build() {
+    nasm -f bin UDVD2.ASM -o "$PKGDIR"/UDVD2.SYS
+}
