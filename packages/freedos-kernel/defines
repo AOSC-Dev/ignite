@@ -1,0 +1,6 @@
+PKGNAME=freedos-kernel
+BUILDDEP=(
+    open-watcom
+    nasm
+    make
+)

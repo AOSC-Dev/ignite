@@ -1,0 +1,7 @@
+VER=0.9.7
+SRCS=(
+    'https://busybox.net/~vda/linld/linld097devel.tar.bz2'
+)
+CHKSUMS=(
+    '8bd4fc31bdfc6afda990846911f2bb6a3c6eba128df0d9cab27315fa6d0a1ff4'
+)

@@ -1,0 +1,48 @@
+#!/bin/bash -e
+
+set -e -o pipefail
+
+CURDIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
+
+source "$CURDIR/lib/base.bash"
+source "$CURDIR/lib/check.bash"
+source "$CURDIR/lib/fetch.bash"
+source "$CURDIR/lib/build.bash"
+
+print_usage() {
+    echo "Usage: $0 <recipe-path>"
+    echo "  <recipe-path> : Path to the recipe file."
+    echo
+    echo "Available recipe files in this workspace:"
+    compgen -f "$CURDIR/sequence/"
+}
+
+PACKAGES_TO_BUILD=()
+
+parse_recipe_file() {
+    while read -r line; do
+        if [[ "$line" =~ ^[[:space:]]*# ]] || [[ -z "$line" ]]; then
+            continue
+        fi
+        PACKAGES_TO_BUILD+=("$line")
+    done < "$1"
+}
+
+if [ "$#" -ne 1 ]; then
+    print_usage
+    exit 1
+fi
+
+# Basic sanity checks
+check_vpkg_git
+
+parse_recipe_file "$1"
+
+for ((idx=0; idx<${#PACKAGES_TO_BUILD[@]}; idx++)); do
+    PKGNAME="${PACKAGES_TO_BUILD[$idx]}"
+    abinfo "[$PKGNAME $((idx+1))/${#PACKAGES_TO_BUILD[@]}] Building package ..."
+    set_title "[$((idx+1))/${#PACKAGES_TO_BUILD[@]}] ${PKGNAME}"
+    ( build_one_package "$CURDIR/packages/$PKGNAME" "$CURDIR/sources" "$CURDIR/build" "$CURDIR/stage" );
+done
+
+set_title ""

@@ -1,0 +1,34 @@
+Types: deb
+URIs: https://ppa.launchpadcontent.net/tkchia/build-ia16/ubuntu
+Suites: noble
+Components: main
+Signed-By: -----BEGIN PGP PUBLIC KEY BLOCK-----
+ Comment: Hostname:
+ Version: Hockeypuck 2.2
+ .
+ xsFNBFp9OPYBEAC1+Xo93Q1oZm8fg+MIMY2ok23y9EhmymMSt33Up5EBTadT34kA
+ kjDPaEkZ+aMkS3Zw4mMZOEkafd3k6PsrUQqeUPfZZ1+bzTh++d8hgZf41hXhUZN7
+ FnJxBiTNxiK3y44WdG5CaX2DgByguaYTDvg7fI6a6x+GRJT4SNPMGthGMv2Et+Op
+ KDXDYgnkPjCncTzL8kf27VghgT/Ly9jG137HBsl+OGrGVAsvnIBlnOYEzxX+6+4P
+ 5nEjuHufgcGN+3hF5XjkAxUc2Jw+ohfgM2f27L6Tj7jyqQI13dNfrS9qikQc+Hvp
+ kspnILMSuKZgTGA/2ne67i/lPR3YwrzJtKxHrl7MQfM/3tT5yzCr8LHsTMpxRHHl
+ 5wb2qNpaO46P9vWpokn+DK04TZXVHeVUibklo6+DKLpR9z26HQ3xTnryogVq6sNX
+ QesXDZVBoYbH7I65FwcfQeh0Nz9V+PenmxBE2dPl0Zww97fUsmVJvlebXcaSAeRD
+ Xg8wOpb/zoz4p88HhOkZtUavSrdLMTRlZ1NaV7KKm3mybF2cLskBfYy7O3/wT0sf
+ ocOGnLRj3cCPPVxPTyZwT8oikFVNceH4MyRqHsiW8T8B4gC8V54fvw2l0kYFhT0A
+ esgqRMa28t1TVZX/SvBAbBWjurLSqDvu9qnrZrOHG6XtfpxCHy5ZyEYiFwARAQAB
+ zRlMYXVuY2hwYWQgUFBBIGZvciBUSyBDaGlhwsF4BBMBAgAiBQJafTj2AhsDBgsJ
+ CAcDAgYVCAIJCgsEFgIDAQIeAQIXgAAKCRCNzRqWBKr+CdOYD/9k+YhSpmZstxzm
+ HvbT7rT/QZmxh1OhiX1jbouQYY/580m5zQOF4TeQpaKlIkw9OPV8t72s7usuPcuZ
+ mDSr7qDYyHjMx+5DZXkRxnt+wB1hzEjuHcXUSja5hYqulwixbAGGFg7+bDBTH0MA
+ pNOg6JV/t/SDIasJm4Z85LSeKAfXqroIkYVeLACinHij1lD1q3+0jgRYdE3PSTir
+ wgqqWm0HxpkVfOpNxuitkepfBocDVgmDDcS7q0vmnNHRzsWa6YaacRrhyOprIu3y
+ sWxnfj34QwgS63Ay6567+zpoSWOis5YpA/GfyhcxxazRZUl+c/1YNnorJNT/2uY1
+ YxBL+rA3t7pxQESe97i7W/LYBWYX6J2oezoczX2IZ6iBlwIDyVKsZwAdZg33E+Xk
+ ClwwH9NT6eTZGE9cBjTECvX5nXxOC5z2pYOWzTUVtgIh8E1ky0F9pIJr+aAmxfEB
+ UtI6knqALRRmJ728FNsfDTjzCtzB0Y+HEacQfCkZ7DzNe6JY5vU4HmEF4r5U5Fbn
+ R7iRNSwMVz9e2nDK3zjr+fQzka3abw00tod4CUF2L7OC04IWlY+1nswKPLyLqs7q
+ fNNH8wWm6plLGwEoRKPH1kLdjqtGjfGuZvWPyCcYff27HxB8g7lYCWxbej1fAcht
+ dyYqw4DUwcwrEz0TkIAb5RxyxNV3uA==
+ =JxSV
+ -----END PGP PUBLIC KEY BLOCK-----
