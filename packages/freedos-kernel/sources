@@ -1,8 +1,0 @@
-VER=2046
-SRCS=(
-    "tbl::https://github.com/FDOS/kernel/releases/download/ke${VER}/kernel.zip"
-)
-CHKSUMS=(
-    'sha256::a62a767a6cccbff0fc1072ab21aa8fd520d6a8b14e1b935e60e84a2fb48b6d0a'
-)
-SUBDIR=SOURCE/KERNEL
