@@ -1,0 +1,14 @@
+# shellcheck shell=bash
+VER=0.94
+SRCS=(git::commit=87ad4668e399c260f25d79a8c8b434e2ad191d83::https://gitlab.com/FreeDOS/base/fdxms)
+CHKSUMS=(SKIP)
+SUBDIR=SOURCE/FDXMS
+
+PKGNAME=fdxms
+BUILDDEP=(gcc)
+
+build() {
+    sed -i '1i.code16' fdxms.asm
+    make fdxms.sys
+    install -Dvm755 fdxms.sys "$PKGDIR"/FDXMS.SYS
+}
