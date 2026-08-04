@@ -1,0 +1,11 @@
+# shellcheck shell=bash
+VER=3.09
+SRCS=(git::commit=f905b43436107b9238c11d5f9a1759c98eb5cc7d::https://github.com/adoxa/shsucd.git)
+CHKSUMS=(SKIP)
+
+PKGNAME=shsucdx
+BUILDDEP=(nasm)
+
+build() {
+    nasm -f bin shsucdx.nsm -o "$PKGDIR"/SHSUCDX.COM
+}
