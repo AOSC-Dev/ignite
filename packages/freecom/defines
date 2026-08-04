@@ -1,0 +1,17 @@
+# shellcheck shell=bash
+VER=0.86
+SRCS=("tbl::https://github.com/FDOS/freecom/releases/download/com${VER//./}/freecom-source.zip")
+CHKSUMS=('sha256::4d9365772efc54fe5bd4bc48a27bcbb7041e71791af36dd0621ef4c8a34cc1d3')
+SUBDIR=freecom
+
+PKGNAME=freecom
+BUILDDEP=(
+    open-watcom
+    nasm
+    make
+)
+
+build() {
+    bash -e build.sh watcom
+    install -Dvm755 command.com "$PKGDIR"/COMMAND.COM
+}
