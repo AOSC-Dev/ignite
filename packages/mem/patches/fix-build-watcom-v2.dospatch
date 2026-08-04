@@ -1,0 +1,17 @@
+--- a/MKFILES/WATCOM.MAK	2026-08-05 00:36:53.992238171 +0800
++++ b/MKFILES/WATCOM.MAK	2026-08-05 00:37:22.514137593 +0800
+@@ -3,10 +3,10 @@
+ #
+ 
+ CC  = wcl
+-CFLAGS        = -c -j -wx -ms -oahls -s
+-CFLAGS_DEBUG  = -c -j -wx -ms -oahls -s -d2
+-LFLAGS        = -fm -"option statics"
+-LFLAGS_DEBUG  = -fm -"option statics" -"debug all"
++CFLAGS        = -c -j -wx -ms -oahls -s -fo=.obj $(INCLUDE_PATH)
++CFLAGS_DEBUG  = -c -j -wx -ms -oahls -s -d2 -fo=.obj $(INCLUDE_PATH)
++LFLAGS        = -fm
++LFLAGS_DEBUG  = -fm
+ MEMSUPT       =
+ OBJOUT        = -fo=
+ EXEOUT        = -fe=

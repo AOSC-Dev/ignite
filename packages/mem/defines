@@ -1,0 +1,22 @@
+# shellcheck shell=bash
+VER=1.12
+SRCS=(git::commit=2830b3aff25e610cb5836af30eb9f2e39b1839e3::https://gitlab.com/FreeDOS/base/mem)
+CHKSUMS=(SKIP)
+SUBDIR=SOURCE/MEM
+
+PKGNAME=mem
+BUILDDEP=(
+    open-watcom
+    nasm
+    upx
+)
+
+build() {
+    mkdir -pv mkfiles test
+    find . -type f -exec 'bash' '-ec' 'F={};FL=${F,,};mv -v $F $FL;' ';'
+    sed -i 's|\\|/|g' makefile mkfiles/*.mak
+
+    wmake -z -f makefile INCLUDE_PATH="-I${WATCOM}/h"
+
+    install -Dvm755 mem.exe "$PKGDIR"/MEM.EXE
+}
