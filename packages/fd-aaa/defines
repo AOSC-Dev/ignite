@@ -1,0 +1,10 @@
+# shellcheck shell=bash
+VER=1
+SRCS=()
+CHKSUMS=()
+
+PKGNAME=fd-aaa
+
+build() {
+    cp -rv "${PROJECT_DIR}"/files/* "$PKGDIR"/
+}
