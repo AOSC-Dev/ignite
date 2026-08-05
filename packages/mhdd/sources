@@ -1,6 +1,0 @@
-SRCS=(
-    'tbl::https://hddguru.com/download/software/mhdd/mhdd32ver4.6archive.zip'
-)
-CHKSUMS=(
-    'sha256::30b6cdd9e09c3512b18503aae0a6b51c0b7653ec74f235c26e5e9c0eb7ce4a1c'
-)
