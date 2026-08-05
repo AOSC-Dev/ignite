@@ -13,6 +13,7 @@ RUN apt-get install -U -y \
     binutils-djgpp gcc-djgpp \
     nasm jwasm \
     upx \
+    dosfstools \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 # Install Open-Watcom v2 (and delete unnecessary files to save space)
 RUN wget -c https://github.com/open-watcom/open-watcom-v2/releases/download/2026-08-01-Build/ow-snapshot.tar.xz \
@@ -20,3 +21,6 @@ RUN wget -c https://github.com/open-watcom/open-watcom-v2/releases/download/2026
     && rm ow-snapshot.tar.xz \
     && rm -rf /opt/owlinux/binp /opt/owlinux/binl /opt/owlinux/binw /opt/owlinux/binb64 /opt/owlinux/arm* \
        /opt/owlinux/binnt* /opt/owlinux/bino64 /opt/owlinux/setup /opt/owlinux/uninstal.exe
+
+LABEL org.opencontainers.image.source=https://github.com/AOSC-Dev/ignite
+LABEL org.opencontainers.image.description="AOSC Afterglow Ignite Build Environment"
