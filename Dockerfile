@@ -11,7 +11,7 @@ RUN apt-get install -U -y \
     bzip2 xz-utils libarchive-tools \
     binutils-ia16-elf gcc-ia16-elf \
     binutils-djgpp gcc-djgpp \
-    nasm \
+    nasm jwasm \
     upx \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 # Install Open-Watcom v2 (and delete unnecessary files to save space)
