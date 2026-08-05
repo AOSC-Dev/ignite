@@ -1,8 +1,9 @@
 freedos-kernel
+freedos-boot
 fd-aaa
 freecom
 shsucdx
 fdxms
 mem
 udvd2
-loadlin
+linld
