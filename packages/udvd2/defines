@@ -5,8 +5,9 @@ CHKSUMS=(SKIP)
 SUBDIR=SOURCE/UDVD2
 
 PKGNAME=udvd2
-BUILDDEP=(nasm)
+BUILDDEP=(jwasm)
 
 build() {
-    nasm -f bin UDVD2.ASM -o "$PKGDIR"/UDVD2.SYS
+    jwasm -Zm -bin UDVD2.ASM
+    install -Dvm755 UDVD2.BIN "$PKGDIR"/UDVD2.SYS
 }
