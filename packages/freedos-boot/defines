@@ -1,0 +1,17 @@
+# shellcheck shell=bash
+VER=0+git20251112
+SRCS=(
+    'git::commit=33e93c659d59c607d3fcbbed3d7561b04b856010::https://github.com/FDOS/sys.git'
+)
+CHKSUMS=(
+    'SKIP'
+)
+
+PKGNAME=freedos-boot
+BUILDDEP=(
+    nasm
+)
+
+build() {
+    nasm -f bin -DISFAT12 -o "$PKGDIR"/boot.bin boot/boot.asm
+}
