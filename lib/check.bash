@@ -38,6 +38,10 @@ check_vpkg_nasm() {
     _check_vpkg_simple "nasm" "nasm"
 }
 
+check_vpkg_jwasm() {
+    _check_vpkg_simple "jwasm" "jwasm"
+}
+
 check_vpkg_make() {
     _check_vpkg_simple "make" "make"
 }
