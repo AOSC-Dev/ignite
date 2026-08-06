@@ -12,7 +12,7 @@ create_blank_floppy_image() {
     local img_size="$2"
     local img_size_blocks=$((img_size / 1024))
 
-    mkfs.vfat -F12 -M 0xF0 --mbr=n -n 'AG-BOOT' -C "$img_file" "$img_size_blocks"
+    mkfs.vfat -F12 --mbr=n -n 'AG-BOOT' -C "$img_file" "$img_size_blocks"
 }
 
 # $1: floppy disk image file path
