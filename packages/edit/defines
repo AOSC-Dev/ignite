@@ -1,0 +1,13 @@
+# shellcheck shell=bash
+VER=0.9b
+SRCS=(git::commit=73a2fd43f28b5dd10b3365038d089f1868880e3b::https://gitlab.com/FreeDOS/base/edit-freedos)
+CHKSUMS=(SKIP)
+SUBDIR=SOURCE/EDIT
+
+PKGNAME=edit
+BUILDDEP=(open-watcom)
+
+build() {
+    find . -type f -exec 'bash' '-ec' 'F={};FL=${F,,};mv -v $F $FL;' ';'
+    wcl ./*.c -I/opt/ow/h/ -I. -fo=.obj -oh -j -3
+}
