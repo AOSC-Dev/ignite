@@ -1,4 +1,5 @@
 # shellcheck shell=bash
+VER=4.6
 SRCS=(
     'tbl::https://hddguru.com/download/software/mhdd/mhdd32ver4.6archive.zip'
 )
@@ -9,6 +10,7 @@ CHKSUMS=(
 PKGNAME=mhdd
 
 build() {
-    # TODO
-    return 2
+    install -Dvm755 MHDD.EXE "$PKGDIR"/MHDD.EXE
+    install -Dvm644 MHDD46.VER "$PKGDIR"/MHDD46.VER
+    install -Dvm644 SEC.BIN "$PKGDIR"/SEC.BIN
 }
