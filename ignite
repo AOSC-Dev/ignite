@@ -66,6 +66,8 @@ if [[ "$STAGE" == "build" ]] || [[ -z "$STAGE" ]]; then
         set_title "[$((idx+1))/${#PACKAGES_TO_BUILD[@]}] ${PKGNAME}"
         ( build_one_package "$CURDIR/packages/$PKGNAME" "$CURDIR/sources" "$CURDIR/build" "$CURDIR/stage" );
     done
+
+    abinfo "BUILD SUCCESSFUL"
 fi
 
 
@@ -99,6 +101,8 @@ if [[ "$STAGE" == "image" ]] || [[ -z "$STAGE" ]]; then
         abinfo "Inserting boot sector into floppy image ..."
         insert_boot_section_image "$CURDIR/$IMAGE_NAME" "$BOOT_SECT_FILE"
     fi
+
+    abinfo "IMAGE CREATION SUCCESSFUL: $CURDIR/$IMAGE_NAME"
 fi
 
 set_title ""
