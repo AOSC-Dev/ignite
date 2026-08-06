@@ -17,6 +17,7 @@ RUN apt-get install -U -y \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 # Install Open-Watcom v2 (and delete unnecessary files to save space)
 RUN wget -c https://github.com/open-watcom/open-watcom-v2/releases/download/2026-08-01-Build/ow-snapshot.tar.xz \
+    && echo "6279e1bf7aea4ceba24539d7924f095142047fa55d352b3ba96f33c81ededd32  ow-snapshot.tar.xz" | sha256sum -c - \
     && mkdir -p /opt/owlinux && tar -C /opt/owlinux -xf ow-snapshot.tar.xz \
     && rm ow-snapshot.tar.xz \
     && rm -rf /opt/owlinux/binp /opt/owlinux/binl /opt/owlinux/binw /opt/owlinux/binb64 /opt/owlinux/arm* \
