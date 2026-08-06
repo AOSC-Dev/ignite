@@ -1,25 +1,5 @@
 shopt -s nullglob
 
-# $1: package path
-_load_defines_file() {
-    source "$1/defines"
-    if [ -z "$VER" ]; then
-        abdie "Package '$1' does not define a version number (VER)."
-    fi
-    if [ -z "$PKGNAME" ]; then
-        abdie "Package '$1' does not define a package name (PKGNAME)."
-    fi
-    if [ -n "$PKGDEP" ]; then
-        abdie "Package '$1' defines runtime dependencies (PKGDEP), which is not supported."
-    fi
-    if ! declare -f build >/dev/null 2>&1; then
-        abdie "Package '$1' does not define a build function."
-    fi
-    if declare -p BUILDDEP >/dev/null 2>&1; then
-        check_packages "${BUILDDEP[@]}"
-    fi
-}
-
 # $1: source URI (from sources file)
 # $2: checksum entry
 # $3: source depot path

@@ -3,9 +3,9 @@
 set -e
 
 # Output formatters.
-abwarn() { echo -e "[\e[33mWARN\e[0m] : \e[1m$*\e[0m"; }
-aberr()  { echo -e "[\e[31mERROR\e[0m]: \e[1m$*\e[0m"; IGNITE_ERROR=1; }
-abinfo() { echo -e "[\e[96mINFO\e[0m] : \e[1m$*\e[0m"; }
+abwarn() { echo -e "[\e[33mWARN\e[0m] : \e[1m$*\e[0m" >&2; }
+aberr()  { echo -e "[\e[31mERROR\e[0m]: \e[1m$*\e[0m" >&2; IGNITE_ERROR=1; }
+abinfo() { echo -e "[\e[96mINFO\e[0m] : \e[1m$*\e[0m" >&2; }
 
 # see if the given string evaluates into true.
 bool() {
