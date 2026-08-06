@@ -13,6 +13,8 @@ jobs:
         steps:
             - uses: actions/checkout@v7
             - name: Build Image
+              env:
+                    WATCOM: /opt/owlinux
               run: |
                   for i in sequence/*; do
                       echo "::group::Build $i"
