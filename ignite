@@ -81,6 +81,7 @@ if [[ "$STAGE" == "image" ]] || [[ -z "$STAGE" ]]; then
     if [[ "${PACKAGES_TO_BUILD[*]}" =~ "freedos-boot" ]]; then
         IS_BOOT_DISK=1
     fi
+    rm -fv "$CURDIR/$IMAGE_NAME"
     create_blank_floppy_image "$CURDIR/$IMAGE_NAME" $((1440 * 1024))
     mount_floppy_image "$CURDIR/$IMAGE_NAME" "$MNT_POINT"
     for ((idx=0; idx<${#PACKAGES_TO_BUILD[@]}; idx++)); do
