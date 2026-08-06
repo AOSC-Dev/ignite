@@ -4,7 +4,7 @@ COPY --chown=0:0 assets/ia16-gcc.sources /etc/apt/sources.list.d/ia16-gcc.source
 COPY --chown=0:0 assets/jwt27-djgpp.sources /etc/apt/sources.list.d/jwt27-djgpp.sources
 # Install essential tools and IA16/DJGPP cross-compilers
 RUN apt-get install -U -y \
-    build-essential \
+    build-essential dos2unix \
     curl \
     wget \
     git-core \
