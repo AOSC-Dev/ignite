@@ -1,0 +1,27 @@
+name: 'CI Build'
+on:
+    push:
+        branches: ['*']
+    pull_request:
+        branches: ['*']
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        container:
+            image: ghcr.io/aosc-dev/afterglow-fd-builder:latest
+        steps:
+            - uses: actions/checkout@v7
+            - name: Build Image
+              run: |
+                  for i in sequence/*; do
+                      echo "::group::Build $i"
+                      ./ignite "$i"
+                      echo "::endgroup::"
+                  done
+            - name: Upload Image
+              uses: actions/upload-artifact@v7
+              with:
+                  name: afterglow-fd-images
+                  path: '*.img'
+    
