@@ -1,0 +1,12 @@
+VER=2020-04-15c
+SRCS=(git::commit=d7951045b56ca338cb577e792c8518149ad20b41::https://gitlab.com/FreeDOS/drivers/xmgr)
+CHKSUMS=(SKIP)
+SUBDIR=SOURCE/XMGR
+
+PKGNAME=xmgr
+BUILDDEP=(jwasm)
+
+build() {
+    jwasm -Zm -bin XMGR.ASM
+    install -Dvm755 XMGR.BIN "$PKGDIR"/XMGR.SYS
+}
