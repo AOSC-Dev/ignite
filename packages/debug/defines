@@ -1,0 +1,12 @@
+VER=2.51
+SRCS=(git::commit=v$VER::https://github.com/Baron-von-Riedesel/DOS-debug)
+CHKSUMS=(SKIP)
+
+PKGNAME=debug
+BUILDDEP=(jwasm)
+
+build() {
+    ln -sv LINEASM.INC src/lineasm.inc
+    jwasm -bin -Fo "$PKGDIR"/DEBUG.COM src/DEBUG.ASM
+    jwasm -D?DPMI=1 -bin -Fo "$PKGDIR"/DEBUGX.COM src/DEBUG.ASM
+}
