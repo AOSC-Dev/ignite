@@ -1,13 +1,13 @@
 # shellcheck shell=bash
 VER=0.9b
-SRCS=(git::commit=73a2fd43f28b5dd10b3365038d089f1868880e3b::https://gitlab.com/FreeDOS/base/edit-freedos)
+SRCS=(git::commit=88b896038e5cfac1a478b3c53e4098aa6624c339::https://github.com/boeckmann/edit)
 CHKSUMS=(SKIP)
-SUBDIR=SOURCE/EDIT
+SUBDIR=source
 
 PKGNAME=edit
-BUILDDEP=(open-watcom)
+BUILDDEP=(open-watcom upx)
 
 build() {
-    find . -type f -exec 'bash' '-ec' 'F={};FL=${F,,};mv -v $F $FL;' ';'
-    wcl ./*.c -I/opt/ow/h/ -I. -fo=.obj -oh -j -3
+    INCLUDE="${WATCOM}"/h wmake UPX=1 edit.exe
+    install -Dvm755 edit.exe "$PKGDIR"/EDIT.EXE
 }
