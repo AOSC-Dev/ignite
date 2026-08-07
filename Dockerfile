@@ -3,7 +3,7 @@ RUN apt-get install -U -y ca-certificates && apt-get clean && rm -rf /var/lib/ap
 COPY --chown=0:0 assets/ia16-gcc.sources /etc/apt/sources.list.d/ia16-gcc.sources
 COPY --chown=0:0 assets/jwt27-djgpp.sources /etc/apt/sources.list.d/jwt27-djgpp.sources
 # Install essential tools and DJGPP cross-compilers
-RUN apt-get install -U -y \
+RUN apt-get full-upgrade -U -y && apt-get install -y \
     build-essential dos2unix \
     curl \
     wget \
