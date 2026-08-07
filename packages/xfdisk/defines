@@ -1,0 +1,14 @@
+# shellcheck shell=bash
+VER=0.9.3
+SRCS=(git::commit=152f00960d43810b667883befeb06e9ba3b47ec5::https://gitlab.com/FreeDOS/disk/xfdisk)
+CHKSUMS=(SKIP)
+# SUBDIR=SOURCE/XFDISK
+
+PKGNAME=xfdisk
+BUILDDEP=(jwasm upx)
+
+build() {
+  abwarn 'TODO: use the FPC compiler to build xfdisk instead of using the prebuilt binaries.'
+  install -Dvm755 BIN/XFDISK.EXE "$PKGDIR"/XFDISK.EXE
+  install -Dvm644 BIN/XFDISK.INI "$PKGDIR"/XFDISK.INI
+}
