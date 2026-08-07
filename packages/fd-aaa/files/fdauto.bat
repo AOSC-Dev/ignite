@@ -21,13 +21,13 @@ SET CFGFILE=%DOSDRV%\FDCONFIG.SYS
 rem Conditional start-up routine based on menu selection.
 GOTO %CONFIG%
 
-:AGINSTLL
+:1
 rem TSR for optical disc support, set drive letter to Z:.
 SHSUCDX.COM /D:MSCD000 /L:Z
 rem FIXME: Does not handle multiple optical drives.
 LINLD cl=@linld.cmd
 
-:AGDOSSHL
+:2
 CLS
 ECHO ╔═════════════════════════════════════════════════════════╗
 ECHO ║ Afterglow: Boot Diskette (DOS, x86)                     ║
