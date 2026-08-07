@@ -2,19 +2,22 @@ FROM ubuntu:24.04
 RUN apt-get install -U -y ca-certificates && apt-get clean && rm -rf /var/lib/apt/lists/*
 COPY --chown=0:0 assets/ia16-gcc.sources /etc/apt/sources.list.d/ia16-gcc.sources
 COPY --chown=0:0 assets/jwt27-djgpp.sources /etc/apt/sources.list.d/jwt27-djgpp.sources
-# Install essential tools and IA16/DJGPP cross-compilers
+# Install essential tools and DJGPP cross-compilers
 RUN apt-get install -U -y \
     build-essential dos2unix \
     curl \
     wget \
     git-core \
     bzip2 xz-utils libarchive-tools \
-    binutils-ia16-elf gcc-ia16-elf \
+    meson pkg-config \
     binutils-djgpp gcc-djgpp \
     nasm jwasm \
     upx \
     dosfstools mtools \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
+# Un-comment the following to install IA16-GCC cross-compiler (for building 16-bit DOS programs)
+# RUN apt-get install -U -y binutils-ia16-elf gcc-ia16-elf && apt-get clean && rm -rf /var/lib/apt/lists/*
+
 # Install Open-Watcom v2 (and delete unnecessary files to save space)
 RUN wget -c https://github.com/open-watcom/open-watcom-v2/releases/download/2026-08-01-Build/ow-snapshot.tar.xz \
     && echo "6279e1bf7aea4ceba24539d7924f095142047fa55d352b3ba96f33c81ededd32  ow-snapshot.tar.xz" | sha256sum -c - \
