@@ -12,7 +12,9 @@ create_blank_floppy_image() {
     local img_size="$2"
     local img_size_blocks=$((img_size / 1024))
 
-    mkfs.vfat -F12 --mbr=n -n 'AG-BOOT' -C "$img_file" "$img_size_blocks"
+    iconv -t CP437 "${CURDIR}"/assets/non-bootable-msg.txt > "${CURDIR}"/build/non-bootable-msg.bin
+    unix2dos "${CURDIR}"/build/non-bootable-msg.bin
+    mkfs.vfat -F12 --mbr=n -m "${CURDIR}/build/non-bootable-msg.bin" -n 'AG-BOOT' -C "$img_file" "$img_size_blocks"
 }
 
 # $1: floppy disk image file path

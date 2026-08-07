@@ -1,0 +1,7 @@
+╔═════════════════════════════════════════════════════════╗
+║ Afterglow: Utility Diskette (DOS, x86)                  ║
+╟─────────────────────────────────────────────────────────╢
+║ This diskette is non-bootable. Please insert the "Boot  ║
+║ Diskette" and then insert this diskette after boot-up.  ║
+╚═════════════════════════════════════════════════════════╝
+Insert "Boot Diskette" and <═╛ to continue ...
