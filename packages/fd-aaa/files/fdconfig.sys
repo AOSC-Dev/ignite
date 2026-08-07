@@ -4,7 +4,7 @@
 ; Load DOS in high memory segment (640KiB ~ 1MiB).
 DOS=HIGH
 ; Load extended memory service (XMS).
-DEVICE=\FREEDOS\BIN\FDXMS.SYS
+DEVICE=\FREEDOS\BIN\XMGR.SYS
 ; Set DOS command prompt.
 SHELL=\FREEDOS\BIN\COMMAND.COM \FREEDOS\BIN /E:2048 /P=\FDAUTO.BAT
 
