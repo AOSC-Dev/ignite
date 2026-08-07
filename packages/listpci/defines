@@ -1,0 +1,14 @@
+VER=1.03
+SRCS=(git::commit=c1f1911a45f8c687103ba735b705ab311365b1fe::https://gitlab.com/FreeDOS/util/listpci/)
+CHKSUMS=(SKIP)
+SUBDIR=SOURCE/LISTPCI
+
+PKGNAME=listpci
+BUILDDEP=(open-watcom)
+
+build() {
+    # lowercase the .C extension so that wcl won't think this is a C++ file
+    mv -v LISTPCI.C LISTPCI.c
+    wcl -I"${WATCOM}"/h -ox -oh -3 LISTPCI.c
+    install -Dvm755 LISTPCI.exe "$PKGDIR"/LISTPCI.EXE
+}
