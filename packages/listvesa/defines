@@ -1,0 +1,14 @@
+VER=1.11
+SRCS=(git::commit=7ec250c6aeac8754798f8c1cbd02426f4acdeab8::https://gitlab.com/FreeDOS/util/listvesa/)
+CHKSUMS=(SKIP)
+SUBDIR=SOURCE/LISTVESA
+
+PKGNAME=listvesa
+BUILDDEP=(open-watcom)
+
+build() {
+    # lowercase the .C extension so that wcl won't think this is a C++ file
+    mv -v LISTVESA.C LISTVESA.c
+    wcl -I"${WATCOM}"/h -ox -oh -3 LISTVESA.c
+    install -Dvm755 LISTVESA.exe "$PKGDIR"/LISTVESA.EXE
+}
