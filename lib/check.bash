@@ -79,12 +79,14 @@ check_vpkg_open-watcom() {
                 abdie "Failed to auto-detect the Open Watcom installation path. Please set the WATCOM environment variable manually."
             fi
             export WATCOM="$_wpath"
+            export INCLUDE="${WATCOM}"/h
         fi
         return 0
     else
         if test -d "$WATCOM" && test -x "$WATCOM/binl64/wcc"; then
             # set the PATH variable to include the Open Watcom binaries.
             export PATH="$PATH:$WATCOM/binl64"
+            export INCLUDE="${WATCOM}"/h
             return 0
         else
             abdie "Please install Open Watcom on your system. See https://open-watcom.github.io/ for instructions."
