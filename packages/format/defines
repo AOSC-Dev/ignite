@@ -1,0 +1,12 @@
+# shellcheck shell=bash
+VER=0.92
+SRCS=("git::commit=tags/v$VER::https://github.com/FDOS/format")
+CHKSUMS=(SKIP)
+
+PKGNAME=format
+BUILDDEP=(open-watcom nasm upx)
+
+build() {
+    INCLUDE="${WATCOM}"/h wmake CFLAGS='-wx -0 -ms -fpc -zp1 -fo=.obj -oh'
+    install -Dvm755 format.exe "$PKGDIR"/FORMAT.EXE
+}
