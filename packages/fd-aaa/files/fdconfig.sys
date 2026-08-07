@@ -5,7 +5,7 @@
 !MENUCOLOR=7,0
 
 ; 30-second delay before booting from AGINSTLL.
-MENUDEFAULT=2,30
+MENUDEFAULT=1,30
 MENU 
 MENU Afterglow Boot Menu (DOS)
 MENU 

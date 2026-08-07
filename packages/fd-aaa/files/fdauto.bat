@@ -1,5 +1,5 @@
 rem Disable command echo-ing.
-@echo off
+@echo off > NUL
 
 rem Set DOS drive letter as the current boot drive.
 SET DOSDRV=%_CWD%
@@ -26,6 +26,8 @@ rem TSR for optical disc support, set drive letter to Z:.
 SHSUCDX.COM /D:MSCD000 /L:Z
 rem FIXME: Does not handle multiple optical drives.
 LINLD cl=@linld.cmd
+ECHO ERROR: Unable to load AOSC Afterglow system!
+GOTO END
 
 :2
 CLS
@@ -51,3 +53,5 @@ ECHO ║   - MHDD: Hard disk low-level formatter and checker     ║
 ECHO ║   - XFDISK: Disk partition editor                       ║
 ECHO ╚═════════════════════════════════════════════════════════╝
 ECHO
+
+:END
