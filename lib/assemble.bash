@@ -71,6 +71,7 @@ install_files_to_floppy() {
             # Move fdauto.bat and fdconfig.sys to the root of the floppy image
             mv -v "${mount_path}/${path_prefix}/fdauto.bat" "${mount_path}/fdauto.bat"
             mv -v "${mount_path}/${path_prefix}/fdconfig.sys" "${mount_path}/fdconfig.sys"
+            mv -v "${mount_path}/${path_prefix}/linld.cmd" "${mount_path}/linld.cmd"
         elif [[ "${package_stage_path}" =~ /freedos-kernel ]]; then
             mv -v "${mount_path}/${path_prefix}/KERNEL.SYS" "${mount_path}/KERNEL.SYS"
         elif [[ "${package_stage_path}" =~ /freedos-boot ]]; then
