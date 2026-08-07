@@ -1,0 +1,13 @@
+# shellcheck shell=bash
+VER=1.4.4
+SRCS=("git::commit=tags/v$VER::https://github.com/FDOS/fdisk")
+CHKSUMS=(SKIP)
+SUBDIR=source/fdisk
+
+PKGNAME=fdisk
+BUILDDEP=(open-watcom nasm upx)
+
+build() {
+    INCLUDE="${WATCOM}"/h wmake
+    install -Dvm755 fdisk.exe "$PKGDIR"/FDISK.EXE
+}
