@@ -1,0 +1,43 @@
+# shellcheck shell=bash
+VER=1.7.0
+_PCIUTILS_VER=3.15.0
+SRCS=(
+    "tbl::https://download.flashrom.org/releases/flashrom-v$VER.tar.xz"
+    "tbl::https://www.kernel.org/pub/software/utils/pciutils/pciutils-${_PCIUTILS_VER}.tar.xz"
+    # TODO: build DOS extender from source
+    "tbl::https://sandmann.dotster.com/cwsdpmi/csdpmi7b.zip"
+)
+CHKSUMS=(
+    "sha256::4328ace9833f7efe7c334bdd73482cde8286819826cc00149e83fba96bf3ab4f"
+    "sha256::c02940f430841ecf158d5d9a50007afc4d5353c8678a2455003ca0b2c4e9f5ff"
+    "sha256::deacda0488e1cdd7c4a9f32fab45662b34c0ed6b2d7d4d13bc07041b62004a8c"
+)
+SUBDIR=.
+
+PKGNAME=flashrom
+BUILDDEP=(djgpp-gcc upx make)
+
+build() {
+    local _sysroot
+    cd "pciutils-${_PCIUTILS_VER}" || return 1
+    rm -f lib/config.mk
+    make install-lib ZLIB=no DNS=no \
+        HOST=i386-djgpp CROSS_COMPILE=i586-pc-msdosdjgpp- \
+        STRIP='--strip-program=i586-pc-msdosdjgpp-strip -s' \
+        OPT='-Os -fomit-frame-pointer -ffunction-sections -fdata-sections' \
+        PREFIX="/usr" DESTDIR="$PWD/../dist"
+    cd ..
+    _sysroot="$PWD/dist"
+    export PKG_CONFIG_PATH="$PWD/dist/usr/lib/pkgconfig"
+    cd "flashrom-v$VER" || return 1
+    sed -i 's|sys_root = .*|sys_root = '"'${_sysroot}'"'|g' ./meson_cross/i586_djgpp_dos.txt
+    meson setup --cross-file ./meson_cross/i586_djgpp_dos.txt -Dbuildtype=release -Dwerror=false -Db_lto=false --wipe build
+    ninja -C build
+    i586-pc-msdosdjgpp-strip -s build/flashrom
+    # Pre-pack the flashrom COFF binary
+    # if done after inserting the extender, UPX will not be able to compress the binary
+    upx --coff --best build/flashrom
+    # "Infect" the program with the DOS extender
+    cat ../bin/CWSDSTUB.EXE build/flashrom > build/flashrom.exe
+    install -Dvm755 build/flashrom.exe "$PKGDIR"/FLASHROM.EXE
+}
