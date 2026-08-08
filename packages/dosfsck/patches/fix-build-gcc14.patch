@@ -1,0 +1,21 @@
+diff --git a/SOURCE/DOSFSCK/IO.C b/SOURCE/DOSFSCK/IO.C
+index 9ccb246..ed0f551 100644
+--- a/IO.C
++++ b/IO.C
+@@ -48,7 +48,7 @@ unsigned device_no;
+ 
+ #include "volume.h"	/* DOS lowlevel disk access functions */
+ #undef llseek
+-static loff_t llseek( int fd, loff_t offset, int whence )
++static loff_t llseek_( int fd, loff_t offset, int whence )
+ {
+     if ((whence != SEEK_SET) || (fd == 4711)) return -1; /* only those supported */
+     return VolumeSeek(offset);
+@@ -58,6 +58,7 @@ static loff_t llseek( int fd, loff_t offset, int whence )
+ #define close CloseVolume
+ #define read(a,b,c) ReadVolume(b,c)  
+ #define write(a,b,c) WriteVolume(b,c)
++#define llseek llseek_
+ 
+ #else
+ 
