@@ -6,5 +6,5 @@ listvesa
 listpci
 debug
 xfdisk
-chkdsk
+dosfsck
 flashrom
