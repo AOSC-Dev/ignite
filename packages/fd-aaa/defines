@@ -7,7 +7,7 @@ PKGNAME=fd-aaa
 
 build() {
     cp -rv "${PROJECT_DIR}"/files/* "$PKGDIR"/
-    iconv -t CP437 "$PKGDIR"/fdauto.bat > "$PKGDIR"/fdauto.cp437.bat
+    iconv -f UTF-8 -t CP437 "$PKGDIR"/fdauto.bat -o "$PKGDIR"/fdauto.cp437.bat
     mv -v "$PKGDIR"/fdauto.cp437.bat "$PKGDIR"/fdauto.bat
     unix2dos "$PKGDIR"/fdauto.bat
 }
